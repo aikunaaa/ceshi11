@@ -4,7 +4,29 @@ $flag = "FLAGFLAGFLAG";
 $secret = "sGucne9iD0"; // 10 characters long
 
 if(!isset($_POST["username"]) || !isset($_POST["password"])){
-    echo '
+	exit();
+}
+$username = $_POST["username"];
+$password = $_POST["password"];
+
+setcookie("ahash", md5($secret . urldecode("admin" . "admin")), time() + (60 * 60 * 24 * 7));
+if (!empty($_COOKIE["check"])) {
+
+    if (urldecode($username) === "admin" && urldecode($password) != "admin") {
+        if ($_COOKIE["check"] === md5($secret . urldecode($username . $password))) {
+            echo "Login successful.\n";
+            die ("The flag is ". $flag);
+        }
+        else {
+            die ("Wrong Cookies. Get out!");
+        }
+    }
+    else {
+        die ("Admins only");
+    }
+}
+
+echo '
 <html>
 
 <body>
@@ -23,25 +45,3 @@ if(!isset($_POST["username"]) || !isset($_POST["password"])){
 </body>
 
 </html>';
-	exit();
-}
-$username = $_POST["username"];
-$password = $_POST["password"];
-
-setcookie("ahash", md5($secret . urldecode("admin" . "admin")), time() + (60 * 60 * 24 * 7));
-if (!empty($_COOKIE["check"])) {
-
-
-    if (urldecode($username) === "admin" && urldecode($password) != "admin") {
-        if ($_COOKIE["check"] === md5($secret . urldecode($username . $password))) {
-            echo "Login successful.\n";
-            die ("The flag is ". $flag);
-        }
-        else {
-            die ("Wrong Cookies. Get out!");
-        }
-    }
-    else {
-        die ("Admins only");
-    }
-}
