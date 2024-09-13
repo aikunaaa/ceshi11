@@ -1,3 +1,10 @@
+<?php
+
+$flag = "FLAGFLAGFLAG";
+$secret = "sGucne9iD0"; // 10 characters long
+
+if(!isset($_POST["username"]) || !isset($_POST["password"])){
+    echo '
 <html>
 
 <body>
@@ -7,7 +14,7 @@
         <title>??</title>
     </head>
     <p>??????????</p>
-    <form method="POST" action="">
+    <form method="POST" action="/">
         Username: <input type="text" name="username"> <br>
         Password: <input type="password" name="password"> <br>
         <button type="submit">Submit</button>
@@ -15,13 +22,7 @@
     <!-- /source.txt -->
 </body>
 
-</html>
-<?php
-
-$flag = "FLAGFLAGFLAG";
-$secret = "sGucne9iD0"; // 10 characters long
-
-if(!isset($_POST["username"]) || !isset($_POST["password"])){
+</html>';
 	exit();
 }
 $username = $_POST["username"];
