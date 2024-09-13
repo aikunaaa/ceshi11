@@ -29,22 +29,6 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 
 setcookie("ahash", md5($secret . urldecode("admin" . "admin")), time() + (60 * 60 * 24 * 7));
-if (!empty($_COOKIE["check"])) {
-
-    if (urldecode($username) === "admin" && urldecode($password) != "admin") {
-        if ($_COOKIE["check"] === md5($secret . urldecode($username . $password))) {
-            echo "Login successful.\n";
-            die ("The flag is ". $flag);
-        }
-        else {
-            die ("Wrong Cookies. Get out!");
-        }
-    }
-    else {
-        die ("Admins only");
-    }
-}
-
 echo '
 <html>
 
@@ -64,3 +48,18 @@ echo '
 </body>
 
 </html>';
+if (!empty($_COOKIE["check"])) {
+
+    if (urldecode($username) === "admin" && urldecode($password) != "admin") {
+        if ($_COOKIE["check"] === md5($secret . urldecode($username . $password))) {
+            echo "Login successful.\n";
+            die ("The flag is ". $flag);
+        }
+        else {
+            die ("Wrong Cookies. Get out!");
+        }
+    }
+    else {
+        die ("Admins only");
+    }
+}
