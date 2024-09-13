@@ -15,10 +15,10 @@
     <!-- /source.txt -->
 </body>
 
-</html <?php
+</html>
+<?php
 
-
-$flag = "flag{G_du93ksy639_sjd}";
+$flag = "FLAGFLAGFLAG";
 $secret = "sGucne9iD0"; // 10 characters long
 
 if(!isset($_POST["username"]) || !isset($_POST["password"])){
@@ -26,7 +26,8 @@ if(!isset($_POST["username"]) || !isset($_POST["password"])){
 }
 $username = $_POST["username"];
 $password = $_POST["password"];
- 
+
+setcookie("ahash", md5($secret . urldecode("admin" . "admin")), time() + (60 * 60 * 24 * 7));
 if (!empty($_COOKIE["check"])) {
 
 
@@ -43,5 +44,3 @@ if (!empty($_COOKIE["check"])) {
         die ("Admins only");
     }
 }
- 
-setcookie("ahash", md5($secret . urldecode("admin" . "admin")), time() + (60 * 60 * 24 * 7));
