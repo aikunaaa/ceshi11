@@ -4,7 +4,7 @@ $flag = "FLAGFLAGFLAG";
 $secret = "sGucne9iD0"; // 10 characters long
 
 if(!isset($_POST["username"]) || !isset($_POST["password"])){
-	exit();
+	echo 'NO DATA\n';
 }
 $username = $_POST["username"];
 $password = $_POST["password"];
